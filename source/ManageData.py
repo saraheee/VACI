@@ -197,9 +197,6 @@ class ManageData(object):
         lda_sgd_possible = (len(set(labels)) > 1) and not (
             lda_input_data.isnull().values.any())
 
-        fw.write_df_to_file(lda_input, "lda-test.csv")
-        fw.write_df_to_file(lda_input_data, "lda-test-data.csv")
-
         if lda_sgd_possible:
             self.weights_lda = self.inter_handler.get_features_by_LDA_classifier(
                 lda_input, labels)
