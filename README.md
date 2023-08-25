@@ -20,36 +20,38 @@ Biology and Medicine (EG VCBM 2023).
 
 https://github.com/saraheee/VACI/assets/24226023/a33808da-ac47-453a-90de-2623997761c2
 
-
 ## Framework
 
 **Interface views** of our visual radiogenomics analysis dashboard:
-* **(A) Scatterplot view:** stratifiied data, where each point represents one patient
-* **(B) Tab views:** detailed data exploration (see figure below)
-* **(C) Heatmap view:** features that characterize and differentiate clusters
-* **(D) Tooltip view:** patient distributions of a selected feature
-* **(E) Advanced analysis:** options are displayed on demand
+
+- **(A) Scatterplot view:** stratifiied data, where each point represents one patient
+- **(B) Tab views:** detailed data exploration (see figure below)
+- **(C) Heatmap view:** features that characterize and differentiate clusters
+- **(D) Tooltip view:** patient distributions of a selected feature
+- **(E) Advanced analysis:** options are displayed on demand
 
 ![framework-overview](https://github.com/saraheee/VACI/assets/24226023/3ca5a117-b867-4076-923d-fc8a88df8446)
 
 **Tab views of our framework** (detail view of B):
-* **Values**: first few feature values of the clinical data
-* **Clusters:** most predictive features of the scatterplot clusters
-* **Top genes:** ranked list of genes of an active patient selection
-* **Processing:** include/exclude data subsets or features for the analysis
-* **Hypothesis:** visual assessment and refinement of hypotheses
+
+- **Values**: first few feature values of the clinical data
+- **Clusters:** most predictive features of the scatterplot clusters
+- **Top genes:** ranked list of genes of an active patient selection
+- **Processing:** include/exclude data subsets or features for the analysis
+- **Hypothesis:** visual assessment and refinement of hypotheses
 
 ![framework-tabs](https://github.com/saraheee/VACI/assets/24226023/cf753f3c-f1b5-4274-b9b4-fe3dc4a78783)
 
 ## Tasks
+
 **Main tasks** of our analytical workflow:
-* **(T0) Preprocessing:** enhance the data quality and facilitate the automated analysis and visualization
-* **(T1) Cohort stratification:** identify and visualize patterns in the high-dimensional and complex data
-* **(T2) Forward analysis:** freely explore the data for knowledge discovery
-* **(T3) Backward analysis:** assess and refine hypotheses on the underlying dat
+
+- **(T0) Preprocessing:** enhance the data quality and facilitate the automated analysis and visualization
+- **(T1) Cohort stratification:** identify and visualize patterns in the high-dimensional and complex data
+- **(T2) Forward analysis:** freely explore the data for knowledge discovery
+- **(T3) Backward analysis:** assess and refine hypotheses on the underlying data
 
 ![task-workflow](https://github.com/saraheee/VACI/assets/24226023/896bc2f4-caa9-403d-935d-f6b7fe008ee0)
-
 
 ## Disclaimer
 
@@ -57,7 +59,7 @@ The `data` folder contains a generated toy data set as the prostate cancer data 
 available. This demonstrates the data set structure that is parsed by our implementation. We changed the default
 parameters for this toy data set to `UMAP` as the dimensionality reduction method and `LDA` for identifying the pairwise
 cluster differences. For different data sets other parameters might be more suitable. The path to new data can be
-specified in the `Options.py` file. The framework currently accepts three files as an input (e.g. for radiomics,
+specified in the `source/Options.py` file. The framework currently accepts three files as an input (e.g. for radiomics,
 genomics, and clinical data) with a unified `id` as a feature column that is used for merging the data tables.
 
 ## Getting started

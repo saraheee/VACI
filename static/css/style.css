@@ -1,0 +1,707 @@
+@font-face {
+    font-family: "jssan";
+    src: url("font/jssans/JSSANSRegular.eot");
+    src: url("font/jssans/JSSANSRegular.woff") format("woff"),
+        url("font/jssans/JSSANSRegular.woff2") format("woff2"),
+        url("font/jssans/JSSANS.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "aneo";
+    src: url("font/aneo/aneo-regular-webfont.woff2") format("woff2"),
+        url("font/aneo/aneo-regular-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "bobcat";
+    src: url("font/bobcat/bobcat-regular-webfont.woff2") format("woff2"),
+        url("font/bobcat/bobcat-regular-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "lora";
+    src: url("font/lora/lora-regular-webfont.woff2") format("woff2"),
+        url("font/lora/lora-regular-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "virgil";
+    src: url("font/virgil/Virgil.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    /*background:#024a48;*/
+    /*background:#8383a1;*/
+    background: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    color: #000000;
+    font-family: "virgil";
+    font-weight: 90;
+    font-size: 30px;
+
+    stroke: black;
+    stroke-width: 1;
+}
+
+.main-view {
+    color: white;
+    font-size: x-large;
+}
+
+p {
+    color: #000000;
+    font-family: "bobcat";
+    font-size: 25px;
+    margin-right: 1%;
+    margin-left: 1%;
+    margin-bottom: 5px;
+}
+
+.visualization {
+    display: flex;
+    align-items: center;
+    width: 80%;
+}
+
+.fa {
+    font-weight: 50;
+    -webkit-text-stroke: 1px #8383a1;
+}
+
+#pie {
+    font-size: 12px;
+    background: #ffffff;
+    border-radius: 45px;
+}
+
+#bar {
+    font-size: 12px;
+    background: #ffffff;
+    border-radius: 45px;
+    margin-left: 1%;
+    margin-top: 8px;
+}
+
+#scatterArea {
+    background: #ffffff;
+    margin-top: 20px;
+    margin-right: 20px;
+    border-radius: 45px;
+    padding: 20px;
+
+    font-size: 18px;
+    float: left;
+
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    /* Opera/IE 8+ */
+    width: 50%;
+    height: 40%;
+    /*stroke: black;*/
+    /*stroke-width: 1;*/
+    /*outline: thin solid #d0d7de;*/
+}
+
+#scatterplot {
+    margin-left: 1%;
+    margin-right: 0%;
+}
+
+#shapCheckBoxes {
+    float: bottom;
+}
+
+#patientArea {
+    background: #a50b0be4;
+    border-radius: 45px;
+    padding: 20px;
+
+    margin-right: 0.1%;
+    margin-top: 70px;
+
+    color: #ffffff;
+    fill: #0f0fd4;
+    font-size: 18px;
+    float: left;
+    line-height: 0.8;
+
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    outline: thin solid #d0d7de;
+
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    /* Opera/IE 8+ */
+}
+
+#highlightPre, #highlightSelAreaPost {
+    margin-bottom: 5px;
+}
+
+.container {
+    margin-left: 45px;
+}
+
+.operator-dropdown {
+    width: 60px;
+    font-family: "bobcat";
+    font-size: 22px;
+    font-weight: 90;
+    position: relative;
+    bottom: 60px;
+}
+
+#hypothesisForm {
+    float: left;
+    display: inline;
+}
+
+/*#clearHypothesisButton {
+    width: 50px;
+}*/
+
+#heatmapArea {
+    font-size: 18px;
+    background: #ffffff;
+    margin-top: 1%;
+    margin-left: 0.07%;
+    border-radius: 45px;
+    overflow: auto;
+    width: 98%;
+
+    /*outline: thin solid #d0d7de;*/
+}
+
+.axis path {
+    opacity: 0.2;
+}
+
+rect.cell {
+    outline: none;
+}
+
+#heatmapPlot {
+    background: #ffffff;
+}
+
+.topMainPlots {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.hide path {
+    display: none;
+}
+
+.hide .tick line {
+    opacity: 0.15;
+}
+
+.tick line {
+    opacity: 0.15;
+    visibility:visible;
+    fill: #203346;
+}
+
+
+#icicleArea,
+#iciclePlot {
+    font-size: 18px;
+    background: #ffffffe4;
+    margin-top: 0%;
+    border-radius: 2px;
+    overflow: auto;
+    width: 98%;
+}
+
+#heatMapDiv {
+    width: 100%;
+    height: 400px;
+    overflow: auto;
+}
+
+#shapInterPlot {
+    margin-top: 20px;
+}
+
+#shapArea,
+#interclassArea,
+#barPlotArea {
+    background: #ffffff;
+    margin-top: 20px;
+    border-radius: 45px;
+    padding: 20px;
+    margin-left: 1%;
+
+    fill: #59596b;
+    font-size: 18px;
+    float: left;
+
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    /* Opera/IE 8+ */
+}
+
+.dropdown-area {
+    /*margin-top: 10px;*/
+    margin-left: 1%;
+    background: #ffffff13;
+    border-radius: 45px;
+    /*padding: 20px;*/
+    fill: #59596b;
+    text-align: center;
+    font-size: 18px;
+    float: left;
+}
+
+.dropdown-content:hover {
+    background-color: #ffffff;
+}
+
+#presets {
+    margin-left: 3%;
+}
+
+#presetTSNE,
+#presetFAMD {
+    margin-right: 10px;
+}
+
+text {
+    color: rgb(0, 0, 0);
+}
+
+text.value {
+    font-size: 70%;
+}
+
+#table {
+    font-size: 16px;
+    background: #ffffff;
+    margin-top: 20px;
+    border-radius: 45px;
+}
+
+#tableDiv {
+    width: 100%;
+    height: 500px;
+    overflow: auto;
+}
+
+.clearfix {
+    clear: both;
+}
+
+div {
+    line-height: 15px;
+    /**margin-bottom: 3px;**/
+    font-size: 10px;
+}
+
+#pie .title,
+#bar .title {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.slice {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#processSelectionButton,
+#zoomToSelectionButton,
+#compareSelectionButton {
+    position: relative;
+    float: right;
+    /*width: 16%;*/
+    /*height: 50px;*/
+    text-align: center;
+    margin-left: 10px;
+}
+
+#importButton {
+    text-align: center;
+    margin-top: 15px;
+    margin-right: 130px;
+
+    position: absolute;
+    top: 0;
+    right: 0
+}
+
+#exportButton {
+    text-align: center;
+    margin-top: 15px;
+    margin-right: 70px;
+    position: absolute;
+    top: 0;
+    right: 0
+}
+
+#advancedButton {
+    text-align: center;
+    margin-top: 15px;
+    margin-right: 10px;
+
+    position: absolute;
+    top: 0;
+    right: 0
+}
+
+h1 {
+    margin-left:20px;
+}
+
+button {
+    width: 120px;
+    height: 40px;
+    padding-left: 10px;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+}
+
+#radiomicsCheckBoxOnShapPlot,
+#genomicsCheckBoxOnShapPlot,
+#clinicalCheckBoxOnShapPlot,
+label, radio {
+    position: relative;
+    float: top center;
+    /*width: 16%;*/
+    /*height: 50px;*/
+    text-align: center;
+    margin-left: 10px;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.cb {
+    /* Double-sized Checkboxes */
+    -ms-transform: scale(2);
+    /* IE */
+    -moz-transform: scale(2);
+    /* FF */
+    -webkit-transform: scale(2);
+    /* Safari and Chrome */
+    -o-transform: scale(2);
+    /* Opera */
+    transform: scale(2);
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+label {
+    font-size: 20px;
+    display: inline;
+    padding-left: 10px;
+    padding-right: 20px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+.btn {
+    background-color: #dadae3;
+    border: none;
+    color: #000000;
+    padding: 10px 12px;
+    font-size: 25px;
+    width: 180px;
+    height: 90px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+
+    outline: thin solid #d0d7de;
+}
+
+.btn-square {
+    background-color: #ffffff;
+    border: none;
+    color: #000000;
+    padding: 10px 12px;
+    font-size: 25px;
+    width: 90px;
+    height: 90px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+
+    outline: thin solid #d0d7de;
+}
+
+.btn-small {
+    background-color: #ffffff;
+    border: none;
+    color: #000000;
+    padding: 10px 12px 10px 10px;
+    font-size: 25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    outline: thin solid #d0d7de;
+}
+
+.btn-square:hover,
+.btn-small:hover {
+    background-color: #f1f6fa;
+}
+
+.btn:hover {
+    background-color: #ffffff;
+}
+
+#processSelectedFeaturesButton {
+    margin-top: 20px;
+}
+
+select {
+    -moz-appearance: none;
+    /* Firefox */
+    -webkit-appearance: none;
+    /* Safari and Chrome */
+    appearance: none;
+    border: none;
+
+    width: 150px;
+    height: 40px;
+    -moz-padding-start: calc(10px - 3px);
+    padding-left: 10px;
+    color: #000000;
+    font-family: "Arial";
+    font-size: 25px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    background: url(arrow.png) no-repeat 90% #ffffffae;
+    background-size: 10px;
+
+    outline: thin solid #d0d7de;
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+select::-ms-expand {
+    /* Internet Explorer */
+    display: none;
+}
+
+select:focus::-ms-value {
+    /* Internet Explorer */
+    background-color: #69b3a2;
+}
+
+select:focus>option:focus {
+    background: #ffffff57 !important;
+}
+
+select option {
+    color: #000000;
+    background-color: #ffffff54;
+}
+
+circle {
+    fill-opacity: 0.7;
+}
+
+circle:hover{
+    fill-opacity: 1;
+}
+
+.selection {
+    stroke: black;
+    stroke-width: 1px;
+    stroke-dasharray: 4px;
+    stroke-opacity: 0.5;
+    fill: transparent;
+}
+
+.lasso path {
+    stroke: #d2deea;
+    stroke-width: 2px;
+}
+
+.lasso .drawn {
+    fill-opacity: 0.18;
+    fill: #d2deea;
+}
+
+.lasso .loop_close {
+    fill: none;
+    stroke-dasharray: 4, 4;
+}
+
+.lasso .origin {
+    fill: #f6f8fa;
+    fill-opacity: 0.8;
+}
+
+.not_possible {
+    fill: #5f746f;
+}
+
+.possible {
+    fill: #ff0000a6;
+}
+
+.selected {
+    stroke: #000000;
+    stroke-width: 2;
+}
+
+.axis path {
+    stroke: #203346;
+}
+
+div.tooltip {
+    position: absolute;
+    text-align: left;
+    padding: 5px;
+    background: #ffffffec;
+    color: #000000;
+    border-style: solid;
+    border-color: #000000b9;
+    border-radius: 5px;
+    border-width: thin;
+    pointer-events: none;
+    font-size: 20px;
+    white-space: pre-wrap;
+    line-height: 1.3;
+}
+
+.d3-tip {
+    line-height: 1;
+    padding: 6px;
+    background: rgb(255, 255, 255);
+    border-style: solid;
+    border-color: #000000b9;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+
+/* tabs */
+.tab {
+    overflow: auto;
+}
+
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+.tab button:hover {
+    background-color: #e5e7ef;
+}
+
+.tab button.active {
+    background-color: #c8cdec;
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    /*border: 1px solid #ccc;*/
+    border-top: none;
+}
+
+/* text field */
+body {
+    font: 16px Arial;
+}
+
+.autocomplete {
+    position: relative;
+    display: inline-block;
+}
+
+input {
+    border: 1px solid transparent;
+    background-color: #f1f1f1;
+    padding: 10px;
+    font-size: 16px;
+}
+
+input[type=text] {
+    background-color: #f1f1f1;
+    width: 100%;
+}
+
+input[type=submit] {
+    position: absolute;
+    background-color: rgb(103, 84, 196);
+    color: #fff;
+}
+
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+.autocomplete-items div:hover {
+    /*when hovering an item:*/
+    background-color: #e9e9e9;
+}
+
+.autocomplete-active {
+    /*when navigating through the items using the arrow keys:*/
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+}
+
+

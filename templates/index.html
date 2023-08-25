@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Radiogenomics App</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/loader.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font/font-awesome/all.css') }}">
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+
+<body onload="document.getElementById('defaultTab').click();">
+    
+    <h1>Visual Analytics for the Integrated Exploration and Sensemaking of Cancer Cohort Radiogenomics and Clinical Information</h1>
+
+        <!--
+            <label for="fileSelect"><i class="fa fa-file-upload"></i></label>
+            <input id="fileSelect" type="file" accept=".csv" />
+        -->
+
+        <button class="btn-small" id="importButton" title="Import data"
+            onclick=importDataButtonClicked();><i class="fa fa-file-upload"></i></button>
+        <button class="btn-small" id="exportButton" title="Export data"
+            onclick=exportDataButtonClicked();><i class="fa fa-file-export"></i></button>
+        <button class="btn-small" id="advancedButton" title="Advanced options"
+            onclick=showAdvancedOptionsButtonClicked();><i class="fa fa-eye"></i></button>
+
+    <div class="scatter">
+        <div class="presets-and-dropdowns">
+
+            <div id="presets" class="dropdown-area">
+                <p><i class="fa fa-chalkboard"></i> Presets</p>
+                <div id="presetButtons">
+                    <button class="btn-square" id="presetTSNE" title="Preset TSNE"
+                        onclick=setTsnePresetButtonClicked();><i class="fa fa-shapes"></i> TSNE</button>
+                    <button class="btn-square" id="presetMDS" title="Preset MDS" onclick=setMdsPresetButtonClicked();><i
+                            class="fa fa-air-freshener"></i> MDS</button>
+                    <button class="btn-square" id="presetFAMD" title="Preset FAMD"
+                        onclick=setFamdPresetButtonClicked();><i class="fa fa-disease"></i> FAMD</button>
+                </div>
+            </div>
+
+            <div id="imp" class="dropdown-area">
+                <p><i class="fa fa-fill"></i> Imputation</p>
+                <select id="imputationDropdown" class="dropdown-content" title="Imputation"
+                    onchange=imputationDropdownChanged();></select>
+            </div>
+
+            <div id="outlier" class="dropdown-area">
+                <p><i class="fa fa-project-diagram"></i> Outlier Rem.</p>
+                <select id="outlierDropdown" class="dropdown-content" title="Outlier removal"
+                    onchange=outlierDropdownChanged();></select>
+            </div>
+
+            <div id="scaling" class="dropdown-area">
+                <p><i class="fa fa-people-arrows"></i> Scaling</p>
+                <select id="scalingDropdown" class="dropdown-content" title="Scaling"
+                    onchange=scalingDropdownChanged();></select>
+            </div>
+
+            <div id="dimred" class="dropdown-area">
+                <p><i class="fa fa-robot"></i> Dim. Red.</p>
+                <select id="dimRedDropdown" class="dropdown-content" title="Dimensionality reduction"
+                    onchange=dimReductionDropdownChanged();></select>
+            </div>
+
+            <div id="clustering" class="dropdown-area">
+                <p><i class="fa fa-viruses"></i> Clustering</p>
+                <select id="clusteringDropdown" class="dropdown-content" title="Clustering"
+                    onchange=clusteringDropdownChanged();></select>
+            </div>
+
+            <div id="interclass" class="dropdown-area">
+                <p><i class="fa fa-dungeon"></i> Interclass</p>
+                <select id="interclassDropdown" class="dropdown-content" title="Interclass feature method"
+                    onchange=interclassDropdownChanged();></select>
+            </div>
+            <!--<img id=loadingIndicator src="{{ url_for('static', filename='res/loading.gif') }}" alt="Indication of a loading page" width="100" margin="20"/>-->
+
+            <div id="loadingIndicator">
+                <div class="cssload-loader">
+                    <div class="cssload-line"></div>
+                    <div class="cssload-line"></div>
+                    <div class="cssload-line"></div>
+                    <div class="cssload-line"></div>
+                    <div class="cssload-line"></div>
+                    <div class="cssload-line"></div>
+                    <div class="cssload-subline"></div>
+                    <div class="cssload-subline"></div>
+                    <div class="cssload-subline"></div>
+                    <div class="cssload-subline"></div>
+                    <div class="cssload-subline"></div>
+                    <div class="cssload-loader-circle-1">
+                        <div class="cssload-loader-circle-2"></div>
+                    </div>
+                    <div class="cssload-needle"></div>
+                    <div class="cssload-loading">loading</div>
+                </div>
+            </div>
+
+            <div class="main"></div>
+            <div class="topMainPlots"></div>
+            <div id="scatterArea">
+                <button class="btn-small" id="compareSelectionButton" title="Compare selection"
+                    onclick=compareSelectionOnScatterplotButtonClicked();><i class="fa fa-capsules"></i>
+                </button>
+                <button class="btn-small" id="processSelectionButton" title="Process selection"
+                    onclick=processSelectionOnScatterplotButtonClicked();><i class="fa fa-gears"></i>
+                </button>
+                <button class="btn-small" id="zoomToSelectionButton" title="Zoom to selection"
+                    onclick=zoomToSelectionOnScatterplotButtonClicked();><i class="fa fa-magnifying-glass"></i>
+                </button>
+            </div>
+           
+
+            <!-- Tab links -->
+            <div class="tab">
+                <button class="tablinks active" onclick="openTab(event, 'PatientVal')" id="defaultTab">Values</button>
+                <button class="tablinks" onclick="openTab(event, 'Clusters')">Clusters</button>
+                <button class="tablinks" onclick="openTab(event, 'TopGenes')">Top genes</button>
+                <button class="tablinks" onclick="openTab(event, 'Processing')">Processing</button>
+                <button class="tablinks" onclick="openTab(event, 'Hypothesis')">Hypothesis</button>
+            </div>
+
+            <!-- Tab content -->
+            <div id="PatientVal" class="tabcontent">
+                <form autocomplete="off">
+                    <div class="autocomplete" style="width:300px;">
+                        <input type="text" id="patientValuesField" placeholder="Enter and select feature">
+                    </div>
+                </form>
+                <div id="patientScoreArea"></div>
+            </div>
+            
+            <div id="Clusters" class="tabcontent">
+                <div id="shapCheckBoxes">
+                    <input checked type="checkbox" class="cb" id="radiomicsCheckBoxOnShapPlot" title="Radiomics"
+                        onclick=radiomicsCheckboxOnShapPlotClicked();><label for="radiomicsCheckBoxOnShapPlot"><i
+                            class="fa fa-chess-board"></i> Radiomics</label>
+                    </input>
+                
+                    <input checked type="checkbox" class="cb" id="genomicsCheckBoxOnShapPlot" title="Genomics"
+                        onclick=genomicsCheckboxOnShapPlotClicked();><label for="genomicsCheckBoxOnShapPlot"><i class="fa fa-dna"></i>
+                        Genomics</label>
+                    </input>
+                
+                    <input checked type="checkbox" class="cb" id="clinicalCheckBoxOnShapPlot" title="Clinical"
+                        onclick=clinicalCheckboxOnShapPlotClicked();><label for="clinicalCheckBoxOnShapPlot"><i
+                            class="fa fa-heartbeat"></i> Clinical</label>
+                    </input>
+                </div>
+                <div id="topFeaturesArea"></div>
+            </div>
+
+            <div id="TopGenes" class="tabcontent">
+                <div id="topGenesArea"></div>
+            </div>
+
+            <div id="Processing" class="tabcontent">
+                <p>INCLUDE</p>
+                <form autocomplete="off">
+                    <div class="autocomplete" style="width:300px;">
+                        <input type="text" id="input" placeholder="Enter and select feature to process">
+                    </div>
+                </form>
+                <div id="currentlySelectedFeaturesArea"></div>
+
+                <p>EXCLUDE</p>
+                <form autocomplete="off">
+                    <div class="autocomplete" style="width:300px;">
+                        <input type="text" id="inputToExclude" placeholder="Enter and select feature to exclude">
+                    </div>
+                </form>
+                <div id="currentlyExcludedFeaturesArea"></div>
+
+                <button type="button" class="btn-small" id="processSelectedFeaturesButton" title="Process selected features"
+                    onclick=processSelectedFeaturesButtonClicked();>
+                    <i class="fa fa-tools"></i>
+                </button>
+
+            </div>
+
+            <div id="Hypothesis" class="tabcontent">
+
+                <form id="hypothesisForm" autocomplete="off">
+                    <div id="origCondBlock" class="subConditionBlock">
+                        
+                        <div class="autocomplete" style="width:300px;">
+                            <input type="text" id="highlightPre" placeholder="Enter and select feature for hypothesis">
+                        </div>
+                        <label class="container">Highlight feature
+                            <span class="checkmark"></span><input id="highlightRadio" type="radio" name="radio" checked="true"
+                                onclick=hypothesisRadioButtonClicked();>
+                        </label>
+                        <label class="container">Add to hypothesis
+                            <span class="checkmark"></span><input id="addRadio" type="radio" name="radio"
+                                onclick=hypothesisRadioButtonClicked();>
+                        </label>
+                    </div>    
+                </form>
+
+                <button class="btn-small" id="clearHypothesisButton" title="Clear all" onclick=clearHypothesisButtonClicked();><i
+                        class="fa fa-trash-alt"></i>
+                </button>
+
+                <div id="distAreaOfSelection">
+                    <select id="linkOperatorDropdown" class="operator-dropdown" title="Operator"
+                        onchange=linkOperatorDropdownChanged(this.id);>
+                    </select>
+                </div>
+                <div id="furtherCondPre"></div>
+            </div>
+
+            <div id="barplotArea"></div>
+            <div id="heatMapDiv">
+                <div id="heatmapArea"></div>
+            </div>
+            <div id="shapArea">
+                <div id="interclassArea"></div>
+            </div>
+        </div>
+
+        <form method="POST" action="{{ url_for('opt') }}"></form>
+        <form method="POST" action="{{ url_for('get_scatterplot_data') }}"></form>
+
+        <script src="{{ url_for('static', filename='js/plugins/d3.v5.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/plugins/d3-lasso.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/plugins/d3-contour.v1.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/plugins/d3-tip.min.js') }}"></script>
+
+        <script>
+            const scatterPlotDataUrl = "{{ url_for('get_scatterplot_data') }}";
+            const scatterPlotHoverDataUrl = "{{ url_for('get_scatterplot_hover_data') }}";
+            const clusterDataUrl = "{{ url_for('get_clustered_data') }}";
+            const shapDataUrl = "{{ url_for('get_shap_data') }}";
+            const interclassDataUrl = "{{ url_for('get_interclass_data') }}";
+            const dataTagUrl = "{{ url_for('get_data_tag') }}";
+        </script>
+
+        <script src="{{ url_for('static', filename='js/d3-scatterplot.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/d3-shapValues.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/d3-patientClusterData.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/d3-featureDistributionsPerCluster.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/d3-patientScores.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/d3-topGenes.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/d3-histogram.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/d3-interclassValues.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/d3-heatmap.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/d3-featureSelection.js') }}"></script>
+
+        <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+</body>
+
+</html>
