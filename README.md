@@ -18,6 +18,8 @@ Biology and Medicine (EG VCBM 2023).
 
 ## Demo Video
 
+https://github.com/saraheee/VACI/assets/24226023/a33808da-ac47-453a-90de-2623997761c2
+
 
 ## Framework
 
