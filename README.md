@@ -30,7 +30,7 @@ https://github.com/saraheee/VACI/assets/24226023/a33808da-ac47-453a-90de-2623997
 * **(D) Tooltip view:** patient distributions of a selected feature
 * **(E) Advanced analysis:** options are displayed on demand
 
-![](res/framework-overview.png)
+![framework-overview](https://github.com/saraheee/VACI/assets/24226023/3ca5a117-b867-4076-923d-fc8a88df8446)
 
 **Tab views of our framework** (detail view of B):
 * **Values**: first few feature values of the clinical data
@@ -39,16 +39,17 @@ https://github.com/saraheee/VACI/assets/24226023/a33808da-ac47-453a-90de-2623997
 * **Processing:** include/exclude data subsets or features for the analysis
 * **Hypothesis:** visual assessment and refinement of hypotheses
 
-![](res/framework-tabs.png)
+![framework-tabs](https://github.com/saraheee/VACI/assets/24226023/cf753f3c-f1b5-4274-b9b4-fe3dc4a78783)
 
 ## Tasks
 **Main tasks** of our analytical workflow:
 * **(T0) Preprocessing:** enhance the data quality and facilitate the automated analysis and visualization
 * **(T1) Cohort stratification:** identify and visualize patterns in the high-dimensional and complex data
 * **(T2) Forward analysis:** freely explore the data for knowledge discovery
-* **(T3) Backward analysis:** assess and refine hypotheses on the underlying data
+* **(T3) Backward analysis:** assess and refine hypotheses on the underlying dat
 
-![](res/task-workflow.png)
+![task-workflow](https://github.com/saraheee/VACI/assets/24226023/896bc2f4-caa9-403d-935d-f6b7fe008ee0)
+
 
 ## Disclaimer
 
