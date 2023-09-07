@@ -4,7 +4,7 @@ We present a visual analytics framework for the integrated exploration and analy
 radiogenomics and clinical information. Our framework supports the workflow of cancer experts and biomedical
 data scientists in investigating cancer mechanisms. This repository serves as the practical implementation of
 the paper **Visual Analytics for the Integrated Exploration and Sensemaking of Cancer Cohort Radiogenomics and
-Clinical Information** which was accepted for publication at the Eurographics Workshop on Visual Computing for
+Clinical Information** which is accepted for publication at the Eurographics Workshop on Visual Computing for
 Biology and Medicine (EG VCBM 2023).
 
 **Authors:** Sarah El-Sherbiny<sup>1</sup>, Jing Ning<sup>2,3</sup>, Brigitte Hantusch<sup>2</sup>, Lukas Kenner<sup>2,3,4,5,6</sup>, and Renata Georgia Raidou<sup>1</sup>
@@ -65,7 +65,7 @@ genomics, and clinical data) with a unified `id` as a feature column that is use
 ## Available online
 
 We hosted the framework with the generated toy data set under the following link:\
-https://kontor.cg.tuwien.ac.at/VACI
+https://kontor.cg.tuwien.ac.at/vaci
 
 ## Getting started
 
