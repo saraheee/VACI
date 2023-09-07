@@ -9,11 +9,11 @@ Biology and Medicine (EG VCBM 2023).
 
 **Authors:** Sarah El-Sherbiny<sup>1</sup>, Jing Ning<sup>2,3</sup>, Brigitte Hantusch<sup>2</sup>, Lukas Kenner<sup>2,3,4,5,6</sup>, and Renata Georgia Raidou<sup>1</sup>
 
-<sup>1</sup>TU Wien, Austria,
-<sup>2</sup>Department of Pathology, Medical University of Vienna, Austria,
-<sup>3</sup>Christian Doppler Laboratory for Applied Metabolomics, Austria,
-<sup>4</sup>Comprehensive Cancer Center, Medical University of Vienna, Austria,
-<sup>5</sup>Unit of Laboratory Animal Pathology, University of Veterinary Medicine Vienna, Austria,
+<sup>1</sup>TU Wien, Austria\
+<sup>2</sup>Department of Pathology, Medical University of Vienna, Austria\
+<sup>3</sup>Christian Doppler Laboratory for Applied Metabolomics, Austria\
+<sup>4</sup>Comprehensive Cancer Center, Medical University of Vienna, Austria\
+<sup>5</sup>Unit of Laboratory Animal Pathology, University of Veterinary Medicine Vienna, Austria\
 <sup>6</sup>Center for Biomarker Research in Medicine, Austria
 
 ## Demo Video
