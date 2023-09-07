@@ -62,6 +62,11 @@ cluster differences. For different data sets other parameters might be more suit
 specified in the `source/Options.py` file. The framework currently accepts three files as an input (e.g. for radiomics,
 genomics, and clinical data) with a unified `id` as a feature column that is used for merging the data tables.
 
+## Available online
+
+We hosted the framework with the generated toy data set under the following link:\
+https://kontor.cg.tuwien.ac.at/VACI
+
 ## Getting started
 
 Execute `run.sh` or `run.bat`. These perform the following operations.

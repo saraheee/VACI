@@ -1,3 +1,4 @@
+from waitress import serve
 import source.ManageData as md
 from source.Options import Opt
 
@@ -373,5 +374,7 @@ if __name__ == "__main__":
         The starting point of the application.
     """
 
-    # serve(app, host='0.0.0.0', port=5000, url_scheme='https')
-    app.run(debug=False)
+    if Opt.server_deployment.value:
+        serve(app, host='0.0.0.0', port=5000, url_scheme='https')
+    else:
+        app.run(debug=False)
