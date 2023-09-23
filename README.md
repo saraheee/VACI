@@ -3,8 +3,8 @@
 We present a visual analytics framework for the integrated exploration and analysis of cancer cohort
 radiogenomics and clinical information. Our framework supports the workflow of cancer experts and biomedical
 data scientists in investigating cancer mechanisms. This repository serves as the practical implementation of
-the paper **Visual Analytics for the Integrated Exploration and Sensemaking of Cancer Cohort Radiogenomics and
-Clinical Information** which is accepted for publication at the Eurographics Workshop on Visual Computing for
+the paper **[Visual Analytics for the Integrated Exploration and Sensemaking of Cancer Cohort Radiogenomics and
+Clinical Information](https://diglib.eg.org/handle/10.2312/vcbm20231220)**, which is published at the Eurographics Workshop on Visual Computing for
 Biology and Medicine (EG VCBM 2023).
 
 **Authors:** Sarah El-Sherbiny<sup>1</sup>, Jing Ning<sup>2,3</sup>, Brigitte Hantusch<sup>2</sup>, Lukas Kenner<sup>2,3,4,5,6</sup>, and Renata Georgia Raidou<sup>1</sup>
